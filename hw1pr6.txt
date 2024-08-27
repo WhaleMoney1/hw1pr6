@@ -1,0 +1,294 @@
+// CSCI 1550: HW 1, Problem 6
+// Filename: hw1pr6.txt 
+// Name: 
+//
+// Example Exercise #0: Baking brownies ... completely legal, I promise!
+Refer to the example in the linked document below.
+
+// Exercise #1
+//part 1
+// first eachperson will pick up a sock. Then every sock will be sorted by whom that sock belongs to. This prevents two people from holding two different socks that need paired at the same time and partially sorts them by color/pattern. Each person will determine who the sock they have picked up goes to and then put it in a pile designated for each person. Then once each person has all of their own socks, they will only fold socks that belong to them. They will then pick up a sock, "sock1" from their new sorted pile, and then pick up an additional sock "sock2". If the socks are different, pick a new "sock2" until they match. Then pair that sock and place it into a new basket to be put away.
+
+//part 2
+
+// Sock sortting pseudocode
+
+// Declaration of sock types
+type Red
+type White
+type Sock
+type Pair
+type Person1
+type Person2
+type Allsocks
+type Pile
+
+// varible declaration
+
+Sock = sock1, sock2, sock3, sock4, sock5, sock6
+pair = pair1, pair2, pair3
+
+Red = [sock1, sock2, sock3, sock4]
+White = [sock5, sock6]
+
+Person1 = [sock1, sock2, sock5, sock6]
+Person2 = [sock3, sock4]
+
+Pile1 =[]
+Pile2 = []
+
+from_basket() // picks up a random sock form a basket. assumes that it removes one from Allsocks
+from_pile(num) // picks up a random sock from a basket, but takes a pile number as an input i.e. input 1 and pulls from pile 1 and input 2 and pulls from pile 2
+
+// sorting socks by person
+
+for sock in Allsocks:
+	temp_sock = from_basket()
+	if temp_sock in Person1:
+		Pile1 += temp_sock
+	else:
+		Pile2 = temp_sock
+
+// pairing socks
+for sock in Pile:
+	first_sock += from_pile(1)
+
+	second_sock += from_pile(1)
+	if first_sock in Red and second_sock in Red:
+		pair = first_sock +second_sock
+		sorted_socks += pair
+	elif first_sock in White and second_sock in White:
+		pair = first_sock +second_sock
+		sorted_socks += pair
+
+
+//Exercise 2: From decimal to binary!
+
+// Part1 First, take the given decimal number. First use the % mod function (num%2) to take the remainder, and store that value, then divide with the / division function to divide with no remainder and then check to see if the new value is zero, if not repeat both steps, recording each remainder value. once the /2 function has given a zero, record the last remainder and then order the stored remainders from most recently accuired to least recently accuired. then return that value.
+
+//Part2
+
+integer num
+integer remainder
+integer array(?) remainder_array //allows for an arbitrary size
+
+num = Get next input
+
+while num != 0   // while the number is not zero, the remainder is taken, added to an array, and then num is manipulated to be halved.
+   remainder = num % 2
+   remainder = [remainder] // I have made this syntax up in order to add it to an array
+   remainder_array = remainder_array + remainder     
+   num = num / 2
+//returns  the array such that it is written from most recently accuired integer to least recently 
+Put remainder_array to output // ideally i would have taken the array and cancatonated them into a string, but for the pseudocode i figure this is alright
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////
+// below is the chat gpt log
+I have pseudo code written in Coral that is supposed to sort socks, 
+ChatGPT said:
+ChatGPT
+I'd be happy to help with your Coral pseudo code for sorting socks! Coral is a language designed for teaching programming concepts, so it has a syntax that's more straightforward and less complex compared to other programming languages.
+
+To get started, could you please provide the pseudo code you've written so far? If you haven't written any yet, let me know what kind of sorting algorithm you want to use, and I can help you write it from scratch.
+
+
+
+You said:
+// First creating/declaring types
+
+// Color Types:
+type Red  // pseudo-code for creating red-type
+type White
+
+// Sock Type:
+type Sock
+
+// Sock pair Type:
+type Pair
+
+// declaring Sock and Pair variables/values:
+Sock sock1, sock2, sock3, sock4
+Pair pair1, pair2, pair3
+
+// from_basket() is a function that represents (randomly) grabbing a sock from the basket
+sock1 = from_basket() : Sock with Red
+sock2 = from_basket() : Sock with Red
+sock3 = from_basket() : Sock with White
+sock4 = from_basket() : Sock with White
+
+// Idea: + operator takes in 2 Sock objects (potentially "decorated" by a color type)
+// and outputs a Pair-object ONLY if the objects MATCH!
+pair1 = sock1 + sock2 : Pair with Red    // success, both are red socks!
+pair2 = sock3 + sock4 : Pair with White  // success, both are white socks!
+pair3 = sock1 + sock3                    // FAILS ... mismatched socks!
+ChatGPT said:
+ChatGPT
+It looks like you’re working on creating and pairing socks based on their colors. Do you want to sort these pairs by color or simply manage them? If you want to delve into sorting the pairs, let me know how you’d like them sorted—by color, or another criterion.
+
+
+
+You said:
+I am hoping to sort these socks by color, am I missing any missing any additional information? or is the code sufficient
+ChatGPT said:
+ChatGPT
+Your pseudo code outlines the basics for creating and pairing socks based on color, but for sorting socks by color, you would need to implement additional steps. Here's a more detailed approach, including sorting:
+
+1. Define a Sorting Function
+You need a function to sort the socks based on their color. This will involve comparing colors and rearranging the socks.
+
+2. Store and Retrieve Socks
+To sort the socks, you'll first need to store them in a list or array-like structure.
+
+3. Sort Socks
+You’ll need a method to sort the stored socks. This can be achieved using a sorting algorithm, which can be implemented in Coral.
+
+Here’s a more detailed pseudo code for sorting socks by color:
+
+coral
+Copy code
+// Define types for colors and socks
+type Red
+type White
+
+type Sock
+type Pair
+
+// Function to create a new sock with a specific color
+function createSock(color: Color) -> Sock:
+    // Implementation to create a sock with given color
+    return new Sock(color)
+
+// Function to sort socks by color
+function sortSocks(socks: Array of Sock) -> Array of Sock:
+    // Implement a simple sorting algorithm (e.g., bubble sort)
+    for i from 0 to length(socks) - 2:
+        for j from 0 to length(socks) - i - 2:
+            if socks[j].color > socks[j + 1].color:
+                // Swap socks[j] and socks[j + 1]
+                temp = socks[j]
+                socks[j] = socks[j + 1]
+                socks[j + 1] = temp
+    return socks
+
+// Main program
+// Create socks
+sock1 = createSock(Red)
+sock2 = createSock(Red)
+sock3 = createSock(White)
+sock4 = createSock(White)
+
+// Store socks in an array
+socksArray = [sock1, sock2, sock3, sock4]
+
+// Sort socks
+sortedSocks = sortSocks(socksArray)
+
+// Output sorted socks
+for sock in sortedSocks:
+    print(sock.color)
+Explanation:
+Creating Socks: The createSock function creates a sock of the specified color.
+Sorting Function: The sortSocks function uses a simple sorting algorithm to order socks by color. This is a basic bubble sort for demonstration; you can use other sorting algorithms if needed.
+Storing and Sorting: Socks are stored in an array, sorted, and then outputted.
+Additional Considerations:
+Color Comparison: Ensure you have a way to compare colors. In the pseudo code above, it assumes colors are comparable with > operator, but you might need a more concrete implementation depending on Coral's actual syntax and capabilities.
+Error Handling: Consider adding error handling for cases where socks cannot be paired or sorted as expected.
+Feel free to adjust the sorting algorithm or the way you manage sock data based on your specific requirements and Coral's capabilities. If you have any questions or need further modifications, just let me know!
+
+
+
+You said:
+could you make this pseudo-code account for multiple people sorting at the same time?
+ChatGPT said:
+ChatGPT
+Certainly! To account for multiple people sorting socks simultaneously, you can incorporate a way to manage and synchronize their actions. Here’s how you might extend the pseudo-code to handle this scenario:
+
+coral
+Copy code
+// Define types for colors and socks
+type Red
+type White
+
+type Sock
+type Pair
+type Person
+
+// Function to create a new sock with a specific color
+function createSock(color: Color) -> Sock:
+    // Implementation to create a sock with given color
+    return new Sock(color)
+
+// Function to sort socks by color
+function sortSocks(socks: Array of Sock) -> Array of Sock:
+    // Implement a simple sorting algorithm (e.g., bubble sort)
+    for i from 0 to length(socks) - 2:
+        for j from 0 to length(socks) - i - 2:
+            if socks[j].color > socks[j + 1].color:
+                // Swap socks[j] and socks[j + 1]
+                temp = socks[j]
+                socks[j] = socks[j + 1]
+                socks[j + 1] = temp
+    return socks
+
+// Function for a person to sort their socks
+function sortByPerson(person: Person, socks: Array of Sock) -> Array of Sock:
+    // Person sorts their assigned socks
+    return sortSocks(socks)
+
+// Main program
+// Create socks
+sock1 = createSock(Red)
+sock2 = createSock(Red)
+sock3 = createSock(White)
+sock4 = createSock(White)
+sock5 = createSock(Red)
+sock6 = createSock(White)
+
+// Store socks in an array
+allSocks = [sock1, sock2, sock3, sock4, sock5, sock6]
+
+// Assign socks to different people
+person1Socks = [sock1, sock3, sock5]
+person2Socks = [sock2, sock4, sock6]
+
+// Create persons
+person1 = new Person
+person2 = new Person
+
+// People sort their socks
+sortedPerson1Socks = sortByPerson(person1, person1Socks)
+sortedPerson2Socks = sortByPerson(person2, person2Socks)
+
+// Combine sorted socks from both people
+combinedSortedSocks = sortedPerson1Socks + sortedPerson2Socks
+
+// Output sorted socks
+for sock in combinedSortedSocks:
+    print(sock.color)
+Explanation:
+Multiple People: Introduced a Person type and functions to handle sorting socks for different people.
+Assign Socks: Socks are assigned to different people. Each person sorts their own socks.
+Combine Results: After sorting, the socks from different people are combined.
+Additional Considerations:
+Synchronization: Ensure that each person’s sorting process is handled independently.
+Concurrency: If the sorting involves real-time concurrency (like in a multi-threaded environment), additional synchronization mechanisms might be needed, though Coral typically focuses on simpler educational examples.
+This setup ensures that multiple people can sort their socks without interference and the results can be combined at the end. If you have further requirements or questions, just let me know!
+
+
+
+
+
